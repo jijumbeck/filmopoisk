@@ -1,0 +1,18 @@
+.pagination {
+    height: 32px;
+    width: 32px;
+
+    border-radius: 50%;
+    background-color: #fff;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: 0 0 4px #0000004D;
+}
+
+.disabled {
+    filter: opacity(0.6);
+    background-color: #E9EAED;
+}
