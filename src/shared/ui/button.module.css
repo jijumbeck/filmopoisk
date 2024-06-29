@@ -1,0 +1,19 @@
+
+.button {
+    background-color: var(--primary-color);
+    padding: 8px 16px;
+
+    border: 1px solid var(--primary-color);
+    border-radius: 8px;
+}
+
+.button:hover {
+    cursor: pointer;
+    filter: brightness(0.75);
+}
+
+.secondary {
+    background-color: #ffffff00;
+    color: var(--primary-color);
+}
+

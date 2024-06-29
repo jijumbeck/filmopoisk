@@ -1,0 +1,78 @@
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+}
+
+.inputBase {
+    background-color: #FFF;
+
+    min-height: 40px;
+    border-radius: 8px;
+    padding: 12px;
+}
+
+.input {
+    border: 1px solid #E1E3E6;
+}
+
+.input:hover, .inputSearchContainer:hover {
+    border: 1px solid #CED2D6;
+    cursor: text;
+}
+
+.inputBase:active, .inputBase:focus {
+    outline: 1px solid var(--primary-color);
+}
+
+.error {
+    border-color: #F04075;
+    color: #F04075;
+}
+
+
+.label {
+    color: #1B1F23;
+}
+
+.required::after {
+    content: ' *';
+    color: #F04075;
+}
+
+.description {
+    color: #ABABAB;
+}
+
+.inputSearchContainer {
+    border: 1px solid #ffffff00;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.inputSearchContainer input {
+    flex-grow: 2;
+}
+
+.focus {
+    outline: 1px solid var(--primary-color);
+}
+
+.inputSearchContainer button {
+    height: 16px;
+    width: 16px;
+    padding: 2px;
+
+    background-color: transparent;
+    border-radius: 50%;
+    outline: 1px solid #999FA6;
+
+    display: flex;
+}
+
+.inputSearchContainer button:hover {
+    background-color: #e7ecf0;
+}
