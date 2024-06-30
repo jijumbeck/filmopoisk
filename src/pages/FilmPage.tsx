@@ -1,10 +1,12 @@
 import { useLoaderData } from "react-router";
-import { Film, GENRES, GenresEnglish, YEARS, YearsKeys } from "../entities/film/model";
+import { Film } from "../entities/film/model";
 import { useGetMovie } from "../features/films/film.slice";
 import { Loading } from "../shared/ui/Loading";
 import { Error } from "../shared/ui/Error";
 import styles from './film.module.css';
 import { RatingFilm } from "../features/films/Rating";
+import { Actor, useGetActor } from "../entities/actors/actor.slice";
+import { ActorCard } from "../entities/actors/ActorCard";
 
 export function loader({ params }: any) {
     const filmId = params.filmId;
@@ -25,9 +27,30 @@ export function FilmPage() {
         return (<Error message="Фильм не найден." />)
     }
 
+    console.log(data);
+
     return (
         <div>
             <FilmBanner film={data} />
+            <h4
+                style={{
+                    margin: '20px 0',
+                    textAlign: 'start',
+                    fontSize: '24px',
+                    fontWeight: '600',
+
+                }}
+            >Актеры</h4>
+            <div
+                style={{
+                    display: 'flex',
+                    gap: '24px'
+                }}
+            >
+                {
+                    data?.actors?.map(actor => <ActorWidget id={actor} />)
+                }
+            </div>
         </div>
     )
 }
@@ -53,5 +76,27 @@ function FilmBanner({ film }: { film: Film }) {
                 </div>
             </div>
         </div>
+    )
+}
+
+function ActorWidget({ id }: { id: string | Actor }) {
+    if (typeof id === 'string') {
+        return <FetchActor id={id} />
+    }
+
+    return (
+        <ActorCard actor={id} />
+    )
+}
+
+const FetchActor = ({ id }: { id: string }) => {
+    const { data } = useGetActor(id);
+
+    if (!data) {
+        return (<Loading />);
+    }
+
+    return (
+        <ActorCard actor={data} />
     )
 }

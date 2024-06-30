@@ -1,10 +1,11 @@
+import { Actor } from "../actors/actor.slice";
 
 export type Film = {
     id: string,
     title: string,
     description: string,
     genre: string,
-    actors?: string[],
+    actors?: string[] | Actor[],
     rating: number,
     totalRatesCount: number, 
     release_year: string,
