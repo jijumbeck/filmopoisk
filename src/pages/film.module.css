@@ -1,0 +1,39 @@
+.film {
+    background-color: white;
+    border-radius: 8px;
+    padding: 24px;
+
+    display: flex;
+    gap: 24px;
+}
+
+.film img {
+    height: 500px;
+    width: 400px;
+    border-radius: 8px;
+}
+
+.film .head {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.film h1 {
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 32px;
+    margin-bottom: 20px;
+}
+
+.info {
+    text-align: start;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.info span {
+    font-weight: 600;
+}

@@ -9,7 +9,7 @@ export function FilmCard({ film, renderRating }: { film: Film, renderRating: Rea
     return (
         <div
             className={`${styles.film}`}
-            onClick={() => navigate(`/film/${film.id}`)}
+            onClick={() => navigate(`/films/${film.id}`)}
         >
             <img src={`http://localhost:3030/static/images/${film.id}.jpeg`} />
 
