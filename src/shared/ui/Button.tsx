@@ -1,5 +1,5 @@
 import { MouseEventHandler, ReactNode } from "react";
-import styles from './style.module.css';
+import styles from './button.module.css';
 
 
 const enum Color {
