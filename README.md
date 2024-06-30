@@ -1,30 +1,37 @@
-# React + TypeScript + Vite
+# Фильмопоиск
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Это приложение представляет собой сервис по поиску фильмов.
 
-Currently, two official plugins are available:
+## Запуск
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```
+npm i
 
-## Expanding the ESLint configuration
+npm run dev
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Функционал
+
+1. Отображение списка фильмов + страниц фильмов.
+2. Отображение значка загрузки.
+3. Фильтр фильмов по жанру и году выпуска.
+4. Аутентификация + выход из учетной записи.
+5. Сохранение оценок пользователя (в local storage) и их отображение.
+6. Все UI элементы реализованы (button, select, input, search input, pagination, rating).
+
+## Stack
+
+* React
+* Typescript
+* Redux Toolkit + RTK Query
+* React Router
+* Axios
+
+## To Do
+
+Нереализованные требования и функционал, требующий доратботки:
+
+1. Fix фильтра фильмов (bug: при изменении одного из параметра другой меняется на неожиданное значение).
+2. Debounce поиска по фильмам.
+3. Миграция на Next.js.
