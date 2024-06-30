@@ -1,4 +1,4 @@
-import { CSSProperties, MouseEventHandler, PropsWithChildren, ReactNode, useId, useState } from "react";
+import { CSSProperties, MouseEventHandler, PropsWithChildren, ReactNode, useEffect, useId, useState } from "react";
 import { Controlled } from "./Input";
 import styles from './select.module.css';
 import arrowIcon from './../../assets/arrow-left.svg';
@@ -15,10 +15,28 @@ export function Select(props: SelectProps) {
     const [isOpen, setIsOpen] = useState(false);
     const id = useId();
 
+    useEffect(() => {
+        const callback = (e: MouseEvent) => {
+            if (e.target) {
+                const id = (e.target as HTMLElement).id;
+                if (id.match(/select-item/)) {
+                    const value = id.split(':')[1];
+                    props?.onChange?.(value);
+                }
+            }
+        }
+
+        const node = document.getElementById(`parent:select${id}`);
+        node?.addEventListener('click', callback);
+
+        return () => node?.removeEventListener('click', callback);
+    }, []);
+
     return (
         <div
             className={`${styles.select}`}
             id={`parent:select${id}`}
+            onClick={() => setIsOpen(!isOpen)}
         >
             {props.label && <label htmlFor={`select${id}`}>{props.label}</label>}
             <div
@@ -54,9 +72,13 @@ function Modal({ children, anchorId }: PropsWithChildren<{ anchorId: string }>) 
     )
 }
 
-export function SelectItem({ children, ...style }: PropsWithChildren<CSSProperties>) {
+export function SelectItem({ children, value, style }: PropsWithChildren<{ value: any, style?: CSSProperties }>) {
     return (
-        <div className={`${styles.selectItem}`} style={style}>
+        <div
+            className={`${styles.selectItem}`}
+            style={style}
+            id={`select-item:${value}`}
+        >
             {children}
         </div>
     )

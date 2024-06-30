@@ -1,0 +1,45 @@
+.film {
+    background-color: white;
+    border-radius: 8px;
+    padding: 24px;
+
+    display: flex;
+    gap: 24px;
+
+    text-align: left;
+}
+
+.film:hover {
+    box-shadow: 0 0 5px #00000038;
+}
+
+.film img {
+    object-fit: cover;
+    width: 100px;
+    height: 120px;
+    border-radius: 8px;
+}
+
+.film h2 {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 20px;
+    margin-bottom: 24px;
+}
+
+.film .info {
+    display: grid;
+    grid-template-columns: 90px auto;
+    row-gap: 12px;
+    column-gap: 16px;
+}
+
+.film .property {
+    font-weight: 400;
+    line-height: 20px;
+    color: #ABABAB;
+}
+
+.film > div:last-child {
+    margin-left: auto;
+}

@@ -11,7 +11,8 @@ export interface InputProps extends Controlled<string> {
     error?: boolean,
     label?: string,
     required?: boolean,
-    description?: string
+    description?: string,
+    type?: string;
 }
 
 export function Input(props: InputProps) {
@@ -34,6 +35,7 @@ export function Input(props: InputProps) {
                 className={`${styles.inputBase} ${styles.input} ${props.error && styles.error}`}
                 placeholder={props.placeholder}
                 required={props.required}
+                type={props.type}
             />
 
             {!!props.description && <div className={`${styles.description}`}>{props.description}</div>}

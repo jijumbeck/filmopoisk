@@ -23,11 +23,35 @@ export const filmAPI = createApi({
         }),
 
         getMoviesBySearch: builder.query<Film[], SearchParams>({
-            query: (params) => `search?title=${params.title ?? ''}&genre=${params.genre ?? ''}&release_year=${params.release_year ?? ''}`
+            query: (params) => `search${buildURLForMoviesBySearch(params)}`,
+            transformResponse: (response: { search_result: Film[] }) => response.search_result
         })
 
     })
 })
+
+function buildURLForMoviesBySearch(params: SearchParams) {
+    const query = [];
+    
+    if (params.title) {
+        query.push(`title=${params.title}`);
+    }
+    if (params.genre) {
+        query.push(`genre=${params.genre}`);
+    }
+    if (params.release_year) {
+        query.push(`release_year=${params.release_year}`);
+    }
+    if (params.page) {
+        query.push(`page=${params.page}`);
+    }
+
+    if (query.length === 0) {
+        return '';
+    }
+
+    return `?${query.join('&')}`
+}
 
 type GetMovieHook = typeof filmAPI.endpoints.getMovie.useQuery;
 type GetMoviesBySearchHook = typeof filmAPI.endpoints.getMoviesBySearch.useQuery;

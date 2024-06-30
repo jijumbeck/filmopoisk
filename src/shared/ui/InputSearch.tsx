@@ -5,7 +5,7 @@ import { Controlled } from './Input';
 
 
 interface InputSearchProps extends Controlled<string> {
-
+    placeholder?: string;
 }
 
 export function InputSearch(props: InputSearchProps) {
@@ -19,6 +19,7 @@ export function InputSearch(props: InputSearchProps) {
                 onChange={e => props?.onChange?.(e.target.value)}
                 onFocus={() => setFocus(true)}
                 onBlur={() => setFocus(false)}
+                placeholder={props.placeholder}
             />
             {props.onChange && props.value ? <Button onClick={() => props?.onChange?.('')} /> : null}
         </div>
