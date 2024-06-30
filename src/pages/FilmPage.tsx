@@ -17,8 +17,6 @@ export function FilmPage() {
     const filmId = useLoaderData() as string;
     const { data, isLoading } = useGetMovie(filmId);
 
-    console.log(data);
-
     if (!data && isLoading) {
         return (<Loading />)
     }
@@ -26,8 +24,6 @@ export function FilmPage() {
     if (!data) {
         return (<Error message="Фильм не найден." />)
     }
-
-    console.log(data);
 
     return (
         <div>
@@ -44,7 +40,8 @@ export function FilmPage() {
             <div
                 style={{
                     display: 'flex',
-                    gap: '24px'
+                    gap: '24px',
+                    overflowX: 'scroll'
                 }}
             >
                 {

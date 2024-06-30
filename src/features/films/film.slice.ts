@@ -16,10 +16,12 @@ type SearchParams = {
 export const filmAPI = createApi({
     reducerPath: 'filmApi',
     baseQuery: fetchBaseQuery({ baseUrl: API_URL, headers: { 'Content-Type': 'application.json' } }),
+    tagTypes: ['Film'],
     endpoints: builder => ({
 
         getMovie: builder.query<Film, string>({
-            query: (id) => `movie/${id}`
+            query: (id) => `movie/${id}`,
+            providesTags: (_, __, id) => [{ type: 'Film', id }]
         }),
 
         getMoviesBySearch: builder.query<Film[], SearchParams>({
@@ -32,7 +34,7 @@ export const filmAPI = createApi({
 
 function buildURLForMoviesBySearch(params: SearchParams) {
     const query = [];
-    
+
     if (params.title) {
         query.push(`title=${params.title}`);
     }

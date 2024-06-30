@@ -19,6 +19,7 @@ export function Rating({
         <div
             style={{
                 display: 'flex',
+                zIndex: 1
             }}
             onMouseOut={() => setStarIndex(undefined)}
         >
@@ -39,7 +40,7 @@ export function Rating({
 
 function getColor(currentIndex: number, startIndex?: number, myGrade?: number, meanGrade?: number) {
     if (startIndex) {
-        return currentIndex > startIndex ? RatingColor.Outline : RatingColor.Primary;
+        return currentIndex > startIndex ? RatingColor.Outline : RatingColor.Secondary;
     }
 
     if (myGrade) {
@@ -47,7 +48,7 @@ function getColor(currentIndex: number, startIndex?: number, myGrade?: number, m
     }
 
     if (meanGrade) {
-        return currentIndex > meanGrade ? RatingColor.Outline : RatingColor.Secondary;
+        return currentIndex > meanGrade ? RatingColor.Outline : RatingColor.Primary;
     }
 
     return RatingColor.Outline;
