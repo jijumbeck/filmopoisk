@@ -3,7 +3,7 @@ import { loginRequest } from "./auth.service"
 import { tokenStorage } from "./auth.storage";
 
 const initialState = {
-    isAuth: true
+    isAuth: false
 };
 
 export const loginUser = createAsyncThunk<{ token: string }, { username: string, password: string }, {}>(
@@ -28,6 +28,9 @@ export const authSlice = createSlice({
     name: 'auth',
     initialState,
     reducers: {
+        checkToken: (state) => {
+            state.isAuth = true;
+        },
         logout: (state) => {
             state.isAuth = false;
         }
@@ -43,3 +46,4 @@ export const authSlice = createSlice({
 })
 
 export default authSlice.reducer;
+export const { checkToken, logout } = authSlice.actions;

@@ -15,6 +15,7 @@
 
 .input {
     border: 1px solid #E1E3E6;
+    width: 100%;
 }
 
 .input:hover, .inputSearchContainer:hover {
