@@ -1,5 +1,6 @@
 import { FilmList } from "../../entities/film/FilmCard";
 import { Film } from "../../entities/film/model";
+import { Error } from "../../shared/ui/Error";
 import { Controlled } from "../../shared/ui/Input";
 import { InputSearch } from "../../shared/ui/InputSearch";
 import { Loading } from "../../shared/ui/Loading";
@@ -21,14 +22,20 @@ export function FilmSearch(props: { inputSearch: Controlled<string>, paginationS
             </div>
             {
                 props.films
-                    ? <FilmList films={props.films} />
+                    ? props.films.length === 0
+                        ? <div style={{ height: '60vh' }}><Error message="Фильмы не найдены" extraMessage="Измените запрос и попробуйте снова" /></div>
+                        : <FilmList films={props.films} />
                     : <Loading />
             }
             <div style={{ marginTop: '20px', width: '100px' }}>
-                <Pagination
-                    page={props.paginationSearch.value ?? 1}
-                    setPageNumber={props.paginationSearch.onChange}
-                />
+                {
+                    props.films && props.films.length > 0
+                        ? <Pagination
+                            page={props.paginationSearch.value ?? 1}
+                            setPageNumber={props.paginationSearch.onChange}
+                        />
+                        : null
+                }
             </div>
         </div>
     )
