@@ -16,7 +16,7 @@ export function FilmSearch(props: { inputSearch: Controlled<string>, paginationS
             >
                 <InputSearch
                     placeholder="Название фильма"
-                    {...props}
+                    {...props.inputSearch}
                 />
             </div>
             {

@@ -6,14 +6,35 @@ import { useGetMoviesBySearch } from "../features/films/film.slice";
 
 
 export function FilmSearchPage() {
-    const [searchParams] = useSearchParams();
+    const [searchParams, setSearchParams] = useSearchParams();
     const [searchInput, setSearchInput] = useState('');
     const [page, setPage] = useState(1);
 
     const genre = searchParams.get('genre') ?? undefined;
     const release_year = searchParams.get('year') ?? undefined;
 
-    console.log(genre, release_year);
+    function setNewParams(params: { genre?: string, release_year?: string }) {
+        setSearchParams((previous) => {
+            if (params.genre) {
+                if (params.genre === '0') {
+                    previous.delete('genre');
+                } else {
+                    previous.set('genre', params.genre);
+                }
+            }
+
+            if (params.release_year) {
+                if (params.release_year === '0') {
+                    previous.delete('year');
+                } else {
+                    previous.set('year', params.release_year);
+                }
+            }
+
+            return previous;
+        })
+        setPage(1);
+    }
 
     const { data } = useGetMoviesBySearch({
         genre: genre,
@@ -31,7 +52,7 @@ export function FilmSearchPage() {
             }}
         >
             <aside>
-                <FilmFilter genre={genre} year={release_year} />
+                <FilmFilter genre={genre} year={release_year} update={setNewParams} />
             </aside>
 
             <div>
