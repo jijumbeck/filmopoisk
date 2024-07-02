@@ -9,7 +9,11 @@ import { loginUser } from "./auth.slice";
 
 export function LoginModal({ setOpen }: { setOpen: (open: boolean) => any }) {
     return createPortal(
-        <div>
+        <div
+            style={{
+                position: 'fixed'
+            }}
+        >
             <div
                 style={{
                     position: 'absolute',
