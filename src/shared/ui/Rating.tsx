@@ -19,7 +19,6 @@ export function Rating({
         <div
             style={{
                 display: 'flex',
-                zIndex: 1
             }}
             onMouseOut={() => setStarIndex(undefined)}
         >
