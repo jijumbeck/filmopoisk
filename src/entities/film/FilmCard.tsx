@@ -11,7 +11,7 @@ export function FilmCard({ film, renderRating }: { film: Film, renderRating: Rea
             className={`${styles.film}`}
             onClick={() => navigate(`/films/${film.id}`)}
         >
-            <img src={`http://localhost:3030/static/images/${film.id}.jpeg`} />
+            <img src={film.poster} />
 
             <div>
                 <h2>{film.title}</h2>

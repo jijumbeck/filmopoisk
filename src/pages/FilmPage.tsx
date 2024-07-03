@@ -57,7 +57,7 @@ function FilmBanner({ film }: { film: Film }) {
         <div
             className={`${styles.film}`}
         >
-            <img src={`http://localhost:3030/static/images/${film.id}.jpeg`} />
+            <img src={film.poster} />
 
             <div style={{ width: '100%' }}>
                 <div className={`${styles.head}`}>
