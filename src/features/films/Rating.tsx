@@ -15,7 +15,7 @@ export function RatingFilm({ film }: { film: Film }) {
         <Rating
             setGrade={setGrade}
             meanGrade={film.rating}
-            myGrade={ratingStorage.getGrade(film.id)}
+            myGrade={ratingStorage.getGrade(film.id)?.grade}
         />
     )
 }

@@ -13,10 +13,15 @@ export const ratingStorage = {
             localStorage.getItem(RATING_VALUES_LOCAL_STORAGE_KEY) ?? '[]'
         );
 
-        ratings.push({
-            filmId,
-            grade
-        });
+        const storedGrade = ratings.find((rate: { filmId: string, grade: string }) => rate.filmId === filmId);
+        if (storedGrade) {
+            storedGrade.grade = grade;
+        } else {
+            ratings.push({
+                filmId,
+                grade
+            });
+        }
 
         localStorage.setItem(RATING_VALUES_LOCAL_STORAGE_KEY, JSON.stringify(ratings));
     },

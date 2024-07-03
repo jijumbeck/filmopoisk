@@ -15,7 +15,7 @@ export const ratingAPI = createApi({
             query: (params) => ({
                 url: `rateMovie`,
                 method: 'POST',
-                body: params
+                body: JSON.stringify(params)
             }),
             invalidatesTags: (_, __, params) => [{ type: 'Film', id: params.movieId }],
             onQueryStarted: async (arg, api) => {
